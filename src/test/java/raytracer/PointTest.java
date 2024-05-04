@@ -14,7 +14,7 @@ class PointTest {
     void testPointCreation(){
         Point point = new Point(ANY_X, ANY_Y, ANY_Z);
 
-        assertEquals(1.0, point.typeOfTuple());
+        assertEquals(1.0, point.isPoint());
     }
 
 }

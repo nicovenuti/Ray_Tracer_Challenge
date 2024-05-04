@@ -2,9 +2,10 @@ package raytracer;
 
 public interface Tuple {
 
-    double typeOfTuple();
+    boolean isPoint();
 
     double[] getCoords();
 
     Tuple add(Tuple tuple);
+    Tuple subtract(Tuple tuple);
 }

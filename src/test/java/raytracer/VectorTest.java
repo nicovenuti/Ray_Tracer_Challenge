@@ -14,6 +14,6 @@ class VectorTest {
     void testVectorCreation(){
         Vector vector = new Vector(ANY_X, ANY_Y, ANY_Z);
 
-        assertEquals(0.0, vector.typeOfTuple());
+        assertEquals(0.0, vector.isPoint());
     }
 }

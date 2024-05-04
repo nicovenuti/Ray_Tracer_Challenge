@@ -1,6 +1,5 @@
 package raytracer;
 
-import javax.naming.OperationNotSupportedException;
 import java.util.Arrays;
 
 public class Point implements Tuple{
@@ -14,8 +13,8 @@ public class Point implements Tuple{
     }
 
     @Override
-    public double typeOfTuple() {
-        return coords[3];
+    public boolean isPoint() {
+        return true;
     }
 
     @Override
@@ -25,13 +24,27 @@ public class Point implements Tuple{
 
     @Override
     public Tuple add(Tuple tuple) {
-        if (tuple.typeOfTuple() > 0.5){
+        if (tuple.isPoint()){
             throw new IllegalArgumentException("Cannot add two points");
         } else {
             double[] otherCoords = tuple.getCoords();
             return new Point(coords[0]+otherCoords[0],
                     coords[1]+otherCoords[1],
                     coords[2]+otherCoords[2]);
+        }
+    }
+
+    @Override
+    public Tuple subtract(Tuple tuple) {
+        double[] otherCoords = tuple.getCoords();
+        if (tuple.isPoint()){
+            return new Vector(coords[0]-otherCoords[0],
+                    coords[1]-otherCoords[1],
+                    coords[2]-otherCoords[2]);
+        } else {
+            return new Point(coords[0]-otherCoords[0],
+                    coords[1]-otherCoords[1],
+                    coords[2]-otherCoords[2]);
         }
     }
 

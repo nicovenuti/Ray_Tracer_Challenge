@@ -47,4 +47,50 @@ public class TupleTest {
 
         assertThrows(IllegalArgumentException.class, ()->tuple1.add(tuple2));
     }
+
+    @Test
+    void testPointAndVectorSubtraction() {
+        Tuple tuple1 = new Point(ANY_X_1, ANY_Y_1, ANY_Z_1);
+        Tuple tuple2 = new Vector(ANY_X_2, ANY_Y_2, ANY_Z_2);
+
+        Tuple actual = tuple1.subtract(tuple2);
+
+        assertEquals(new Point(
+                ANY_X_1 - ANY_X_2,
+                ANY_Y_1 - ANY_Y_2,
+                ANY_Z_1 - ANY_Z_2), actual);
+    }
+
+    @Test
+    void testVectorAndVectorSubtraction() {
+        Tuple tuple1 = new Vector(ANY_X_1, ANY_Y_1, ANY_Z_1);
+        Tuple tuple2 = new Vector(ANY_X_2, ANY_Y_2, ANY_Z_2);
+
+        Tuple actual = tuple1.subtract(tuple2);
+
+        assertEquals(new Vector(
+                ANY_X_1 - ANY_X_2,
+                ANY_Y_1 - ANY_Y_2,
+                ANY_Z_1 - ANY_Z_2), actual);
+    }
+
+    @Test
+    void testPointAndPointSubtraction() {
+        Tuple tuple1 = new Point(ANY_X_1, ANY_Y_1, ANY_Z_1);
+        Tuple tuple2 = new Point(ANY_X_2, ANY_Y_2, ANY_Z_2);
+
+        Tuple actual = tuple1.subtract(tuple2);
+
+        assertEquals(new Vector(
+                ANY_X_1 - ANY_X_2,
+                ANY_Y_1 - ANY_Y_2,
+                ANY_Z_1 - ANY_Z_2), actual);
+    }
+    @Test
+    void testVectorAndPointAddition() {
+        Tuple tuple1 = new Vector(ANY_X_1, ANY_Y_1, ANY_Z_1);
+        Tuple tuple2 = new Point(ANY_X_2, ANY_Y_2, ANY_Z_2);
+
+        assertThrows(IllegalArgumentException.class, ()->tuple1.subtract(tuple2));
+    }
 }

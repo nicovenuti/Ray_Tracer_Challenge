@@ -15,8 +15,8 @@ public class Vector implements Tuple{
     }
 
     @Override
-    public double typeOfTuple() {
-        return coords[3];
+    public boolean isPoint() {
+        return false;
     }
 
     @Override
@@ -27,14 +27,26 @@ public class Vector implements Tuple{
     @Override
     public Tuple add(Tuple tuple) {
         double[] otherCoords = tuple.getCoords();
-        if (tuple.typeOfTuple() < 0.5){
-            return new Vector(coords[0]+otherCoords[0],
-                    coords[1]+otherCoords[1],
-                    coords[2]+otherCoords[2]);
-        } else {
+        if (tuple.isPoint()) {
             return new Point(coords[0]+otherCoords[0],
                     coords[1]+otherCoords[1],
                     coords[2]+otherCoords[2]);
+        } else {
+            return new Vector(coords[0]+otherCoords[0],
+                    coords[1]+otherCoords[1],
+                    coords[2]+otherCoords[2]);
+        }
+    }
+
+    @Override
+    public Tuple subtract(Tuple tuple) {
+        if (tuple.isPoint()){
+            throw new IllegalArgumentException("Cannot add two points");
+        } else {
+            double[] otherCoords = tuple.getCoords();
+            return new Vector(coords[0]-otherCoords[0],
+                    coords[1]-otherCoords[1],
+                    coords[2]-otherCoords[2]);
         }
     }
 
