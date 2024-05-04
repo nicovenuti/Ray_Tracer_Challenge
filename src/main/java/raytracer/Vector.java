@@ -51,6 +51,44 @@ public class Vector implements Tuple{
     }
 
     @Override
+    public Tuple negate() {
+        return new Vector(-coords[0], -coords[1], -coords[2]);
+    }
+
+    public void times(double coeff){
+        coords[0] *= coeff;
+        coords[1] *= coeff;
+        coords[2] *= coeff;
+    }
+
+    public double modulo(){
+        return Math.sqrt(coords[0]*coords[0]
+                + coords[1]*coords[1]
+                + coords[2]*coords[2] );
+    }
+
+    public void normalize(){
+        double modulo = Math.sqrt(coords[0]*coords[0]
+                + coords[1]*coords[1]
+                + coords[2]*coords[2] );
+        times(modulo);
+    }
+
+    public double dot(Vector otherVector){
+        double[] otherCoords = otherVector.getCoords();
+        return (coords[0]*otherCoords[0]
+                + coords[1]*otherCoords[1]
+                + coords[2]*otherCoords[2] );
+    }
+
+    public Vector cross(Vector otherVector){
+        double[] otherCoords = otherVector.getCoords();
+        return new Vector (coords[1]*otherCoords[2] - coords[2]*otherCoords[1],
+                coords[2]*otherCoords[0] - coords[0]*otherCoords[2],
+                coords[0]*otherCoords[1] - coords[1]*otherCoords[0]);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

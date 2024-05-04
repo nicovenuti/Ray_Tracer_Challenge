@@ -1,5 +1,6 @@
 package raytracer;
 
+import javax.management.OperationsException;
 import java.util.Arrays;
 
 public class Point implements Tuple{
@@ -46,6 +47,11 @@ public class Point implements Tuple{
                     coords[1]-otherCoords[1],
                     coords[2]-otherCoords[2]);
         }
+    }
+
+    @Override
+    public Tuple negate() {
+        throw new UnsupportedOperationException("cannot negate a Point");
     }
 
     @Override

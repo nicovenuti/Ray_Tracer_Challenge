@@ -8,4 +8,6 @@ public interface Tuple {
 
     Tuple add(Tuple tuple);
     Tuple subtract(Tuple tuple);
+
+    Tuple negate();
 }
