@@ -14,7 +14,7 @@ class PointTest {
     void testPointCreation(){
         Point point = new Point(ANY_X, ANY_Y, ANY_Z);
 
-        assertEquals(true, point.isPoint());
+        assertTrue(point.isPoint());
     }
 
 }

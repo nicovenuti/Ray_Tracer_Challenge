@@ -68,10 +68,10 @@ public class Vector implements Tuple{
     }
 
     public void normalize(){
-        double modulo = Math.sqrt(coords[0]*coords[0]
-                + coords[1]*coords[1]
-                + coords[2]*coords[2] );
-        times(modulo);
+        if (modulo() == 0){
+            return;
+        }
+        times(1/modulo());
     }
 
     public double dot(Vector otherVector){
